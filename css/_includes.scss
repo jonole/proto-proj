@@ -1,0 +1,27 @@
+/* Set up custom variables:
+
+  $color-background: #e7e7e7;
+  $color-white: #fff;
+  $color-text-black: #222;
+  $border-radius-button: 5px;
+  
+  etc...
+
+  Create Mixins:
+  
+  @mixin standard-button{  
+    font-size: 0.9em;
+    line-height: 1.15;
+    font-weight: 400;
+    padding:10px 20px;
+    color:$color-button-white;
+    border-radius: $border-radius-button;
+    background-color: red;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    position: relative;
+    transition: all .2s;
+  }
+  
+ */
