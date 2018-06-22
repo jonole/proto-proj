@@ -1,5 +1,5 @@
-# ABAX UK Prototype
-This repo is for prototyping.
+# Proto Proj
+This repo is a easy starter for prototyping.
 
 The project is a static web page for development of css-framework and html.
 
