@@ -8,7 +8,7 @@ let browserSync = require('browser-sync').create();
 gulp.task('sass', function() {
     return gulp.src("css/*.scss")
         .pipe(sass().on('error', sass.logError))
-        .pipe(autoprefixer())
+        .pipe(autoprefixer({ grid: true, browsers: ['>1%'] }))
         .pipe(gulp.dest("css"))
         .pipe(browserSync.stream());
 });
@@ -20,6 +20,14 @@ gulp.task('minify-css', function(){
     .pipe(gulp.dest('css'))
 });
 
+gulp.task('babel', function(){
+	return gulp.src('js/main.js')
+		.pipe(babel({
+			presets: ['@babel/env']
+		}))
+		.pipe(gulp.dest('dist'))
+});
+
 // Static Server + watching scss/html files
 gulp.task('serve', function() {
 
@@ -28,6 +36,7 @@ gulp.task('serve', function() {
     });
 
     gulp.watch("css/*.scss", gulp.series(['sass', 'minify-css']));
+    gulp.watch('js/*.js', gulp.series(['babel']));
     gulp.watch("*.html").on('change', browserSync.reload);
 });
 
