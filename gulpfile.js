@@ -3,6 +3,7 @@ let autoprefixer = require('gulp-autoprefixer');
 let sass = require('gulp-sass');
 let cleanCSS = require('gulp-clean-css');
 let browserSync = require('browser-sync').create();
+var babel = require('gulp-babel');
 
 // Compile sass into CSS, autoprefix & auto-inject into browsers
 gulp.task('sass', function() {
@@ -21,7 +22,7 @@ gulp.task('minify-css', function(){
 });
 
 gulp.task('babel', function(){
-	return gulp.src('js/main.js')
+	return gulp.src('js/*.js')
 		.pipe(babel({
 			presets: ['@babel/env']
 		}))
@@ -35,7 +36,7 @@ gulp.task('serve', function() {
         server: "./"
     });
 
-    gulp.watch("css/*.scss", gulp.series(['sass', 'minify-css']));
+    gulp.watch("sass/*.scss", gulp.series(['sass', 'minify-css']));
     gulp.watch('js/*.js', gulp.series(['babel']));
     gulp.watch("*.html").on('change', browserSync.reload);
 });
